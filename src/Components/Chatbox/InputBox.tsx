@@ -1,11 +1,10 @@
 import { useRef } from 'react';
 import { RiSendPlaneFill } from 'react-icons/ri'
-import LeftCard from './LeftCard';
 
 function InputBox() {
-    const dataRef= useRef()
+    const dataRef: React.MutableRefObject<any>= useRef()
 
-    function handleSubmit(event){
+    function handleSubmit(event: any){
         event.preventDefault();
         console.log()
       }

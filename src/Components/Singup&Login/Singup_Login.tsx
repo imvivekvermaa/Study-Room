@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+
 
 function Singup_Login() {
+  const emailRef: React.MutableRefObject<any>= useRef()
+  const usernameRef: React.MutableRefObject<any>= useRef()
+  const passwordRef: React.MutableRefObject<any>= useRef()
+
+
+  function userSignUp(e:any){
+    e.preventDefault()
+    // const emailData= emailRef.current.value
+    // const usernameData= usernameRef.current.value
+    // const passwordData= passwordRef.current.value
+
+  }
   return (
     <div className="w-full h-full bg-black flex items-center justify-center">
       <div className="w-[60vw] h-[70vh] flex">
@@ -22,9 +35,9 @@ function Singup_Login() {
           className="w-full h-full bg-zinc-200 flex items-center justify-center rounded-lg"
         >
           <div className="form font-semibold">
-            <form className="w-60 h-80 mt-5 pt-5" action="submit">
+            <form onSubmit={userSignUp} className="w-60 h-80 mt-5 pt-5" action="submit">
               <label htmlFor="email">Email :</label>
-              <input
+              <input ref={emailRef}
                 className="block w-full h-8 pl-1 mb-2 border border-black rounded"
                 placeholder="xyz@gmail.com"
                 type="text"
@@ -32,7 +45,7 @@ function Singup_Login() {
                 id="email"
               />
               <label htmlFor="username">Username :</label>
-              <input
+              <input ref={usernameRef}
                 className="block w-full h-8 pl-1 mb-2 border border-black rounded"
                 placeholder="username"
                 type="text"
@@ -40,7 +53,7 @@ function Singup_Login() {
                 id="username"
               />
               <label htmlFor="password">password :</label>
-              <input
+              <input ref={passwordRef}
                 className="block w-full h-8 pl-1 mb-2 border border-black rounded"
                 placeholder="password"
                 type="password"

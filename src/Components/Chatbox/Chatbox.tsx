@@ -7,9 +7,9 @@ import axios from "axios";
 
 function Chatbox() {
   const [data, setData] = useState<any>([]);
-  const dataRef = useRef();
+  const dataRef: React.MutableRefObject<any> = useRef();
 
-  async function getFetchedData(userInput) {
+  async function getFetchedData(userInput:string) {
     try {
       // Simulating asynchronous data fetching
       const fetchData = await axios({
@@ -21,17 +21,17 @@ function Chatbox() {
       });
       const chatData = fetchData.data;
       console.log(chatData);
-      setData((prevData) => [...prevData, chatData]);
+      setData((prevData: string) => [...prevData, chatData]);
     } catch (error) {
       console.error("Error fetching data:", error);
       // Handle error if needed
     }
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event:any) {
     event.preventDefault();
     const userInput = dataRef.current.value;
-    setData((prevData) => [...prevData, userInput]);
+    setData((prevData:any) => [...prevData, userInput]);
     getFetchedData(userInput);
     dataRef.current.value = "";
   }
@@ -41,15 +41,15 @@ function Chatbox() {
       id="chatbox"
       className="w-[40vw] mr-3 text-white"
     >
-      <div className=" font-semibold mb-2 border-t rounded-lg text-center">
-        Chat-Box
+      <div className="h-8 font-semibold mb-2 border-zinc-600 border-t rounded-lg text-center text-zinc-400">
+       Chat-Box
       </div>
       <div
         id="chat"
         style={{ scrollbarWidth: "none" }}
         className="w-[40vw] h-[450px] p-2 overflow-auto"
       >
-        {data.map((value, index) => {
+        {data.map((value:string, index: number) => {
           if (index % 2 == 0) {
             return <LeftCard key={index} newdata={value} />;
           }
@@ -61,13 +61,14 @@ function Chatbox() {
         onSubmit={handleSubmit}
         id="inputbox"
         
-        className="w-[40vw] h-10 my-1 mx-1 border-zinc-300 border-b rounded-lg flex items-center p-2 flex justify-between"
+        className="w-[40vw] h-10 my-1 mx-1 border-zinc-300 border-b border-t rounded-lg flex items-center p-2 flex justify-between"
       >
         <input
           ref={dataRef}
           id="input"
           type="text"
-          className=" w-[40vw] pl-1 bg-transparent focus:outline-none"
+          className=" w-[40vw] pl-1 bg-transparent focus:outline-none text-zinc-400"
+          placeholder="Message . ."
         />
         <button className="focus:outline-none">
           <RiSendPlaneFill className="self-center text-xl text-green-500" />

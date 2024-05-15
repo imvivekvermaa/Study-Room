@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 function Youtube() {
-  let persistedUrl;
   const [url, setUrl] = useState("");
 
-  const finalURL = function convertToEmbeddedUrl(normalUrl) {
+  const finalURL = function convertToEmbeddedUrl(normalUrl:string) {
     // Regular expression to match YouTube video ID
     const videoIdRegex =
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -26,7 +25,7 @@ function Youtube() {
   async function urlData(event: any) {
     event.preventDefault();
     const inputUrl = event.target["0"].value;
-    const embeddedUrl = finalURL(inputUrl);
+    const embeddedUrl= finalURL(inputUrl);
     console.log(embeddedUrl);
     setUrl(embeddedUrl);
     event.target["0"].value = "";

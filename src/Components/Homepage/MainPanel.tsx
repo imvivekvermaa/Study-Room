@@ -1,9 +1,7 @@
-import { useState } from "react";
 import Chatbox from "../Chatbox/Chatbox";
 import Youtube from "./Youtube";
 
 function MainPanel() {
-  const [urlValue, setUrlValue] = useState("");
 
   return (
     <div className="col-start-1 col-end-5 mt-20">
